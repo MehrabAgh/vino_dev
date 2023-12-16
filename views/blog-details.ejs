@@ -1,0 +1,135 @@
+<% let index = 1; %>
+    <section class="total-body mobile-comon-animation mt-5 pt-3 d-block">
+        <div class="blog-details-page comon-services-pge">
+
+            <div class="container">
+                <div class="row gx-lg-5">
+                    <div class="col-md-7 col-lg-8" data-aos="fade-left">
+                        <div class="blog-post">
+                            <figure>
+                                <img src="/images/<%= Data.media %>" alt="post" />
+                            </figure>
+                            <div class="d-lg-flex justify-content-between share-div">
+                                <ul class="list-unstyled d-flex">
+                                    <li> <i class="far fa-user"></i> نویسنده :
+                                        <%= Data.writer %>
+                                    </li>
+                                    <li> <i class="far fa-calendar-alt"></i> تاریخ :
+                                        <%= Data.dateID %>
+                                    </li>
+                                    <li> <i class="far fa-comment"></i> تعداد نظرات :
+                                        <% for( index = 1; index < Data.userOpinions.length; index++ ) {} %>
+                                            <span> <%= index %></span>
+                                    </li>
+                                </ul>
+
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-share-alt"></i> اشتراک گذاری</a>
+
+                            </div>
+                            <h2>
+                                <%= Data.title %>
+                            </h2>
+                            <p>
+                                <%= Data.description %>
+                            </p>
+                        </div>
+                        <div class="leave-sec-part" style="width:90%;">
+                            <h2> ثبت نظر </h2>
+                            <div class="row">
+                                <form action="/blogDetails/?_id=<%= Data._id %>" method="post">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="نام خود را وارد کنید" name="nameUser" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="ایمیل خود را وارد کنید" name="email" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" placeholder="متن پیام خود را وارد کنید" name="message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="submit" class="btn subimt-comment" value="ارسال نظر" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="comment-sec-part " margin-right: 25%;>
+                            <h2> نظرات</h2>
+                            <%  Data.userOpinions.forEach(element => { %>
+                                <div class="comon-com-div ">
+                                    <div class="d-lg-flex justify-content-between ">
+                                        <figure>
+                                            <img src="/images/profile-avatar.svg " alt="user-pic " />
+                                        </figure>
+                                        <div class="comment-text ">
+                                            <div class="d-flex align-items-center ">
+                                                <h5 class="mb-0 ">
+                                                    <%= element.nameUser %>
+                                                </h5> <span class="d-inline me-3 "><%=element.time%></span>
+                                            </div>
+
+                                            <p>
+                                                <%= element.message %>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <% }) %>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-4 " data-aos="fade-right ">
+                        <div class="category-div ">
+                            <h2> دسته بندی ها </h2>
+                            <ul class="list-unstyled mt-4 ">
+                                <% categories.forEach(element => { %>
+                                    <li>
+                                        <a href="/blog "> <i class="fas fa-caret-left "></i>
+                                            <%= element.name%>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                        <div class="recent-post-div mt-5 ">
+                            <h2 class="mb-4 "> پست های اخیر </h2>
+                            <div class="recent-post-div-insiide ">
+                                <% if (posts.length > 4) { %>
+                                    <% for( let a = 0; a < 3; a++ ) { %>
+                                        <a href="# " class="d-flex w-100 justify-content-between align-items-center ">
+                                            <figure>
+                                                <img src="/images/<%=posts[a].media %>" alt="post" />
+                                            </figure>
+                                            <h5>
+                                                <%= posts[a].description.substring(0,40);%>...
+                                            </h5>
+                                        </a>
+                                        <% } %>
+                                            <% }else{  %>
+                                                <% for( let b = 0; b < posts.length; b++ ) { %>
+                                                    <a href="# " class="d-flex w-100 justify-content-between align-items-center ">
+                                                        <figure>
+                                                            <img src="/images/<%=posts[b].media %>" alt="post" />
+                                                        </figure>
+                                                        <h6>
+                                                            <%= posts[b].description.substring(0,40);%>...
+                                                        </h6>
+                                                    </a>
+                                                    <% } %>
+                                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>

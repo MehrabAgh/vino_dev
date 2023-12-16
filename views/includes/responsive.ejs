@@ -1,0 +1,47 @@
+<!-- menu mobile -->
+<div class="offcanvas offcanvas-end menu-mobile" tabindex="-1 " id="offcanvasmenu" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title " id="offcanvasExampleLabel ">
+            <img src="images/logo-sc.png " alt="logo " />
+        </h5>
+        <button type="button " class="btn-close text-reset " data-bs-dismiss="offcanvas" aria-label="Close "></button>
+    </div>
+    <div class="offcanvas-body">
+
+        <ul class="navbar-nav me-auto mb-2 mt-lg-0 mb-lg-0 align-items-lg-center ">
+            <li class="nav-item ">
+                <a class="nav-link active " href="/ ">خانه</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="/about ">درباره ما</a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link " href="/projects ">نمونه کار ها</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="/services "> خدمات</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="/blog ">بلاگ</a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link " href="/contact ">تماس با ما</a>
+            </li>
+            <li class="nav-item">
+                <% if(!session){%>
+                    <a href="/account/register" class="signiup">
+             ورود / ثبت نام
+          </a>
+                    <% }else{ %>
+                        <a href="/account/profile" class="signedup">
+              پروفایل
+           </a>
+                        <% } %>
+            </li>
+
+        </ul>
+
+    </div>
+</div>

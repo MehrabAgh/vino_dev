@@ -1,0 +1,99 @@
+<body>
+    <section class="u-align-center  u-section-1" style="background-image: url('/images/<%=data.titleimage %>' )">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h2 class="u-text u-text-default u-title u-text-1" style="color:cornflowerblue; text-shadow: 5px 5px 7px #000000;">
+                <%= data.title %>
+            </h2>
+        </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2">
+        <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+            <div class="u-custom-color-1 u-expanded-width u-shape u-shape-rectangle u-shape-1"></div>
+            <div class="u-align-center-xs u-container-style u-product u-product-1">
+                <div class="u-container-layout u-valign-bottom u-container-layout-1">
+                    <!--product_image-->
+                    <img src="/images/<%= data.imagebody %>" alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1">
+                    <!--/product_image-->
+                    <div class="u-align-center u-container-style u-expanded-width-xs u-group u-shape-rectangle u-white u-group-1">
+                        <div class="u-container-layout u-valign-bottom u-container-layout-2">
+                            <!--product_title-->
+                            <h2 class="u-product-control u-text u-text-default u-text-1">
+                                <a class="u-product-title-link" href="#">
+                                    <!--product_title_content-->
+                                    <%= data.description_1%>
+                                        <!--/product_title_content-->
+                                </a>
+                            </h2>
+                            <div class="u-product-control u-product-desc u-text u-text-default u-text-2">
+                                <!--product_content_content-->
+                                <p>
+                                    <%= data.description_1%>
+                                </p>
+                                <!--/product_content_content-->
+                            </div>
+                            <!--/product_content-->
+                            <p class="u-align-center u-text u-text-default u-text-3">
+                                <%= data.description_2 %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/product_item-->
+            <!--/product-->
+        </div>
+    </section>
+    <div class="leave-sec-part" style="width:50%; margin-right: 25%;">
+        <h2> ثبت نظر </h2>
+        <div class="row">
+            <form action="/careerDetails/?_id=<%= data._id %>" method="post">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="نام خود را وارد کنید" name="nameUser" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="ایمیل خود را وارد کنید" name="email" />
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="متن پیام خود را وارد کنید" name="message"></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="submit" class="btn subimt-comment" value="ارسال نظر" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="comment-sec-part" style="width:50%; margin-right: 25%;">
+        <h2> نظرات</h2>
+        <%  data.userOpinions.forEach(element => { %>
+            <div class="comon-com-div">
+                <div class="d-lg-flex justify-content-between">
+                    <figure>
+                        <img src="/images/profile-avatar.svg" alt="user-pic" />
+                    </figure>
+                    <div class="comment-text">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">
+                                <%= element.nameUser %>
+                            </h5> <span class="d-inline me-3"> <%= element.time %></span>
+                        </div>
+
+                        <p>
+                            <%= element.message %>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <% }) %>
+    </div>
+</body>

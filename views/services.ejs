@@ -1,0 +1,56 @@
+<section class="total-body mobile-comon-animation overflow-hidden mt-5 pt-3 d-block">
+    <div class="pricing-page comon-services-pge">
+
+        <div class="container">
+            <h6 class="text-center" data-aos="fade-up">لیست بروز ترین سرویس ها</h6>
+            <h2 class="text-center" data-aos="fade-down"> سرویس ها </h2>
+            <div style=" display: flex;width: 70%; flex-wrap: wrap; justify-content: center;  color: brown; margin-top: 5%; margin: auto;">
+                <p style="margin-top:3%;">
+                    مشتری گرامی ، شما میتوانید از طریق سرویس های زیر به خدمات و پکیج های ما دسترسی داشته باشید .
+                </p>
+                <p style="margin-top:3%; color: brown;">
+                    در صورت نبود سرویس دلخواه خود در لیست زیر ، شما میتوانید با توجه به نیاز خود با ما تماس بگیرید و سفارش دلخواه خود را ثبت کنید .
+                </p>
+            </div>
+
+            <div class="row w-100 mx-auto my-5 text-center align-content-center justify-content-between">
+                <% Data.forEach(element => {  console.log(element)%>
+                    <div class="column " data-aos="fade-right">
+                        <div class="pricing-card <%=element.colorMode %>">
+                            <% if(element.star){%>
+                                <div class="popular">محبوب</div>
+                                <% } %>
+                                    <div class="pricing-header">
+                                        <span class="plan-title"><%= element.name %></span>
+                                        <div class="price-circle">
+                                            <span class="price-title">
+                                                    <span><%= new Intl.NumberFormat().format( element.price) %> </span>
+                                            </span>
+                                            <span class="info"> تومان</span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="badge-box">
+                                <span>تخفیف  35%</span>
+                            </div> -->
+                                    <ul>
+                                        <li>
+                                            <br/>
+                                        </li>
+                                        <% element.components.forEach(com => { %>
+                                            <li>
+                                                <%= com %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                    <div class="buy-button-box">
+                                        <a href="/product-details/?_id=<%= element._id %>" class="buy-now">خرید پلن</a>
+                                    </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+    </div>
+
+</section>
